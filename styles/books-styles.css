@@ -13,15 +13,15 @@
 }
 :root 
 {
-    --thumbnails-img-width: 25vw;
-    --thumbnails-img-height: 15vw;
-    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.75);
+    --thumbnails-img-width: 20vw;
+    --thumbnails-img-height: 12vw;
+    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
 }
+
 body, html 
 {
     height: 100%;
 }
-
 
 body 
 {
@@ -49,9 +49,9 @@ body
 
  .main-class.hidden 
  {
-    --thumbnails-img-width: 50vw;
-    --thumbnails-img-height: 50vw;
-    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.3);
+    --thumbnails-img-width: 32vw;
+    --thumbnails-img-height: 25vw;
+    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.33);
  }
 
 .hidden .details-container 
@@ -74,17 +74,16 @@ body
 
  .hide-button 
  {
-    position:relative;
-    top: auto;
-    width: 100px;
-    height: 50px;
-    border-radius: 7px;
+    position: absolute;
+    top: 3vh;
+    right: 3vw;
+    border-radius: 3px;
     background-color: rgb(128, 128, 211);
  }
 
  .details-image 
  {
-     width: 80%;
+     width: 85vw;
      height: 70%;
      border-radius: 25%;
  }
@@ -95,19 +94,19 @@ body
     font-family: airstream;
     font-style: italic;
     position: absolute;
-    left: auto;
-    bottom: auto;
-    font-size: small;
+    left: 2vw;
+    bottom: 2vw;
+    font-size: 2em;
     background-color:rgb(217, 217, 233);
  }
 
  .thumbnails-list 
  {
     list-style: none;
-    display:flex;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    max-height: 25vh;
+    max-height: 25;
     overflow-y: auto;
     justify-content: space-around;
     padding-left: 0;
@@ -124,7 +123,7 @@ body
     margin-top: 2.5vh;
     border: solid 1px rgb(113, 98, 228);
     overflow: hidden;
-    border-radius: 25%; 
+    border-radius: 10%; 
  }
  
  .thumbnails-image 
@@ -160,21 +159,21 @@ body
     margin-right: 2vw;
  }
 
- @media (min-width: 700px) 
+ @media (min-width: 560x) 
  {
     .thumbnails-list
     {
         flex-direction: column;
         justify-content: flex-start;
         flex-wrap: nowrap;
-        max-height: 70vh;
+        max-height: 80vh;
         order: -1;
     }
 
     .hidden .thumbnails-list 
     {
-        max-width: 70vw;
-        flex-direction: unset;
+        max-width: 60vw;
+        flex-direction: row;
         flex-wrap: wrap;
     }
 
@@ -232,6 +231,7 @@ body
     {
         font-size: 2.5em;
     }
+
     .details-title 
     {
         font-size: 2.5em;
@@ -241,7 +241,7 @@ body
 
     .thumbnails-title 
     {
-        font-size: 1.3em;
+        font-size: 1.5em;
     }
 
     .hidden .thumbnails-title 
@@ -251,8 +251,8 @@ body
 
     .hide-button 
     {
-        font-size: 1.2em;
-        right: 1vw;
-        top: 1.5vh;
+        position: absolute;
+        right: 3vw;
+        top: 6vh;
     }
  }
