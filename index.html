@@ -1,12 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/books-styles.css">
     <title>Document</title>
 </head>
+
+
 <body>
-    <label style="font: size 40px;display:block; text-align: center;">My name is Kate</label>
+    <header class="logo">
+        library
+    </header>
+    <main class="main-class hidden">
+        <section class="details-container">
+            <div class="details-frame">
+                <button class="hide-button">hide details</button>
+                <img src="images/0.jpg" class="details-image">
+                <span class="details-title">books</span>
+            </div>
+
+        </section>
+        <ul class="thumbnails-list">
+            <li class="thumbnails-item">
+                <a href="#" class="thumbnails-anchor" data-details-image="images/1.jpg" 
+                data-details-title="The Book Thief">
+                    <img src="images/1.jpg" class="thumbnails-image">
+                    <span class="thumbnails-title">The Book Thief</span>
+                </a>
+            </li>
+            <li class="thumbnails-item">
+                <a href="#" class="thumbnails-anchor" data-details-image="images/2.jpg" 
+                data-details-title="1984">
+                    <img src="images/2.jpg" class="thumbnails-image">
+                    <span class="thumbnails-title">1984</span>
+                </a>
+            </li>
+            <li class="thumbnails-item">
+                <a href="#" class="thumbnails-anchor" data-details-image="images/3.jpg" 
+                data-details-title="Jane Eyer">
+                    <img src="images/3.jpg" class="thumbnails-image">
+                    <span class="thumbnails-title">Jane Eyer</span>
+                </a>
+            </li>
+            <li class="thumbnails-item">
+                <a href="#" class="thumbnails-anchor" data-details-image="images/4.jpg" 
+                data-details-title="La Nausée">
+                    <img src="images/4.jpg" class="thumbnails-image">
+                    <span class="thumbnails-title">La Nausée</span>
+                </a>
+            </li>
+            <li class="thumbnails-item">
+                <a href="#" class="thumbnails-anchor" data-details-image="images/5.jpg" 
+                data-details-title="Gone with the Wind">
+                    <img src="images/5.jpg" class="thumbnails-image">
+                    <span class="thumbnails-title">Gone with the Wind</span>
+                </a>
+            </li>
+            <li class="thumbnails-item">
+                <a href="#" class="thumbnails-anchor" data-details-image="images/6.jpg" 
+                data-details-title="The Gadfly">
+                    <img src="images/6.jpg" class="thumbnails-image">
+                    <span class="thumbnails-title">The Gadfly</span>
+                </a>
+            </li>
+            <li class="thumbnails-item">
+                <a href="#" class="thumbnails-anchor" data-details-image="images/7.jpg" 
+                data-details-title="Fight club">
+                    <img src="images/7.jpg" class="thumbnails-image">
+                    <span class="thumbnails-title">Fight club</span>
+                </a>
+            </li>
+            <li class="thumbnails-item">
+                <a href="#" class="thumbnails-anchor" data-details-image="images/8.jpg" 
+                data-details-title="Die verwandlung">
+                    <img src="images/8.jpg" class="thumbnails-image">
+                    <span class="thumbnails-title">Die verwandlung</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </main>
+<script src="src/index.js"></script>
 </body>
+
 </html>

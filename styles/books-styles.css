@@ -1,0 +1,258 @@
+@font-face 
+{
+    font-family: lakeshore;
+    src: url(fonts/LAKESHOR-webfont.svg);
+    src: url(fonts/LAKESHOR-webfont.woff);
+}
+
+@font-face 
+{
+    font-family: airstream;
+    src: url(fonts/Airstream-webfont.svg);
+    src: url(fonts/Airstream-webfont.woff);
+}
+:root 
+{
+    --thumbnails-img-width: 25vw;
+    --thumbnails-img-height: 15vw;
+    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.75);
+}
+body, html 
+{
+    height: 100%;
+}
+
+
+body 
+{
+    display: flex; 
+    flex-direction: column;
+    background-color: rgb(190, 202, 229);
+    margin: 0;
+ }
+
+ .logo  
+ {
+    font-size: 2em;
+    background-color: rgb(128, 133, 187);
+    display: block;
+    text-align: center;
+    font-family: lakeshore;
+    text-transform: uppercase;
+ }
+
+ .main-class 
+ {
+    display: flex;
+    flex-direction: column;
+ }
+
+ .main-class.hidden 
+ {
+    --thumbnails-img-width: 50vw;
+    --thumbnails-img-height: 50vw;
+    --thumbnails-title-height: calc(var(--thumbnails-img-height) * 0.3);
+ }
+
+.hidden .details-container 
+{
+    display: none;
+}
+
+ .details-container 
+ {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     margin-top: 2.5vh; 
+ }
+
+ .details-frame 
+ {
+    position: relative;
+ }
+
+ .hide-button 
+ {
+    position:relative;
+    top: auto;
+    width: 100px;
+    height: 50px;
+    border-radius: 7px;
+    background-color: rgb(128, 128, 211);
+ }
+
+ .details-image 
+ {
+     width: 80%;
+     height: 70%;
+     border-radius: 25%;
+ }
+
+ .details-title 
+ {
+    display: block;
+    font-family: airstream;
+    font-style: italic;
+    position: absolute;
+    left: auto;
+    bottom: auto;
+    font-size: small;
+    background-color:rgb(217, 217, 233);
+ }
+
+ .thumbnails-list 
+ {
+    list-style: none;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 25vh;
+    overflow-y: auto;
+    justify-content: space-around;
+    padding-left: 0;
+ }
+
+ .hidden .thumbnails-list 
+ {
+   max-height: 80vh;
+ }
+ .thumbnails-item 
+ {
+    max-width: var(--thumbnails-img-width);
+    min-height: calc(var(--thumbnails-img-height) + var(--thumbnails-title-height));
+    margin-top: 2.5vh;
+    border: solid 1px rgb(113, 98, 228);
+    overflow: hidden;
+    border-radius: 25%; 
+ }
+ 
+ .thumbnails-image 
+ {
+     width: var(--thumbnails-img-width);
+     height: var(--thumbnails-img-height);
+     display: block;
+ }
+
+ .thumbnails-title 
+ {
+     display: block; 
+     text-align: center;
+     height: var(--thumbnails-title-height);
+     background-color: rgb(201, 200, 253);
+     
+ }
+
+ .hidden .thumbnails-title 
+ {
+    font-size: 1.4em;
+ }
+
+ .thumbnails-anchor 
+ {
+    text-decoration: none;  
+ }
+
+ .thumbnails-item:hover 
+ {
+    transform: scale(1.3);
+    margin-left: 2vw;
+    margin-right: 2vw;
+ }
+
+ @media (min-width: 700px) 
+ {
+    .thumbnails-list
+    {
+        flex-direction: column;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        max-height: 70vh;
+        order: -1;
+    }
+
+    .hidden .thumbnails-list 
+    {
+        max-width: 70vw;
+        flex-direction: unset;
+        flex-wrap: wrap;
+    }
+
+.main-class.hidden 
+{
+    flex-direction: row;
+    justify-content: left;
+}
+
+    .main-class 
+    {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .details-container 
+    {
+        justify-content: center;
+    }
+
+    .details-title 
+    {
+        left: 0;
+    }
+
+    .details-image 
+    {
+        width: 50vw;
+        height: 40vw;
+    }
+
+    .thumbnails-item 
+    {
+        width: calc(var(--thumbnails-img-width) * 0.5);
+        min-height: calc((var(--thumbnails-img-height) + var(--thumbnails-title-height)) * 0.5);
+        margin-right: 5vh;
+    }
+
+    .hidden .thumbnails-item 
+    {
+        max-height: calc((var(--thumbnails-img-height) + var(--thumbnails-title-height)) * 0.5);
+    }
+
+    .thumbnails-image 
+    {
+        width: calc(var(--thumbnails-img-width) * 0.5);
+        height: calc(var(--thumbnails-img-height) * 0.5);
+    }
+
+ }
+
+ @media (min-width: 900px) 
+ {
+    .logo 
+    {
+        font-size: 2.5em;
+    }
+    .details-title 
+    {
+        font-size: 2.5em;
+        left: -1vw;
+        bottom: 1vw;
+    }
+
+    .thumbnails-title 
+    {
+        font-size: 1.3em;
+    }
+
+    .hidden .thumbnails-title 
+    {
+        font-size: 2em;
+    }
+
+    .hide-button 
+    {
+        font-size: 1.2em;
+        right: 1vw;
+        top: 1.5vh;
+    }
+ }
