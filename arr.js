@@ -1,42 +1,43 @@
-let string = ["My", "name", "is", "Kate"]
+let arr = [8, 5 ,7, 3, 1, 5, 6 ,4, 5];
 
-function ulSurround(arr)
+let min = arr => arr.reduce((a, b) => Math.min(a, b));
+let max = arr => arr.reduce((a, b) => Math.max(a, b));
+console.log("minimum:", min(arr));
+console.log("maximum:", max(arr)); 
+
+
+let ar = ["1_", "2", "3", "_a", "b"];
+function deleteWithPrefix(strings, prefix) 
 {
-    let ularr = arr.map(function(element)
-    {
-        return "<li>"+element+"</li>";
+   return strings.filter(function(el, index) 
+   {
+        if(!el.includes(prefix))
+        {
+            return el;
+        }
     })
-    
-    ularr.splice(0, 0, "<ul>");
-    ularr.push("</ul>");
-    return ularr;
-    
 }
 
-let newStr = ulSurround(string);
+console.log(deleteWithPrefix(ar, '_'))
 
-console.log(newStr);
 
-//
+let numbers = [8,5,7,3,1,5,6,4,5];
 
-let arr = [13,10,13,10,13,10];
-let count = (arr) => 
+function getSortedEvenOdd(numbers)
 {
-  return arr.reduce(
-    (acc, item) => (acc.set(item, (acc.get(item) || 0) + 1), acc),
-    new Map ()
-  );
-};
+    let evens = [];
+    let odds = [];
 
-console.log(count(arr));
+    for(i = 0; i < numbers.length - 1; i++) 
+    {
+        (numbers[i] % 2 === 0) ? evens.push(numbers[i]) : odds.push(numbers[i]);
+    }
 
-//
-
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-function Move(arr)
-{
-   return [].concat(arr.slice(-1),arr.slice(0,-1))
+    return [].concat.apply([], 
+        [
+        evens.sort((a, b) => b - a),
+        odds.sort((a, b) => a - b)
+    ]);
 }
 
-console.log(Move(arr))
+console.log(getSortedEvenOdd(numbers));
