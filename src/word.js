@@ -18,7 +18,7 @@ clearFields();
 
     const wordGuess = even.target.value.toLowerCase();
     currentTrialField.innerHTML= 'Remaining trials' + (N_TRIALS-currentTrial++);
-    even.targer.value='';
+    even.target.value='';
     if (wordGuess.length != N_LETTERS) {
         alert(`A word should contain ${N_LETTERS} letters`)
         updateStatus(wordGuess, word)
