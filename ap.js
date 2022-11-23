@@ -1,30 +1,55 @@
-function isEqual(object1, object2) {
-    const str1 = Object.getOwnPropertyNames(object1);
-    const str2 = Object.getOwnPropertyNames(object2);
-  
-    if (str1.length !== str2.length) {
-      return false;
+const string1 = ["magic", "cigam", "amgic"];
+const string2 = ["igmac", "gamic", "agmic"];
+
+function isEqual(string1, string2)
+{
+  const checkString1 = {};
+  string1.forEach(element => 
+  {
+    if(checkString1[element])
+    {
+      checkString1[element]++;
     }
-  
-    for (let i = 0; i < str1.length; i += 1) {
-      const str = str1[i];
-  
-      if (object1[str] !== str2[str]) {
-        return false;
+    else
+    {
+      checkString1[element] = 1;
+    }
+  });
+
+  const checkString2 = {};
+  string2.forEach(element =>
+  {
+    if(checkString2[element])
+    {
+      checkString2[element]++;
+    }
+    else
+    {
+      checkString2[element] = 1;
+    }
+  }  
+    );
+
+const checkString11 = Object.entries(checkString1);
+const checkString22 = Object.entries(checkString2);
+
+const strings = checkString22.slice(0); 
+
+for(let i = 0; i < checkString1.length; i++)
+{
+        let index = strings.indexOf(checkString11[i]);
+        if(!~index)
+        { 
+          return false;
+        } 
+        else 
+        {
+          strings.splice(index, 1);
+          console.log(strings.join());
+        }
       }
+      return true; 
     }
-  
-    return true;
-  }
-  
-  const object1 = 
-  {
-      word: 123
-  };
-  
-  const object2 = 
-  {
-  word: 321
-  };
-  
-  console.log(isEqual(object1, object2));
+    console.log(isEqual(string1, string2));
+
+   
