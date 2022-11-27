@@ -33,23 +33,9 @@ function isEqual(string1, string2)
 const checkString11 = Object.entries(checkString1);
 const checkString22 = Object.entries(checkString2);
 
-const strings = checkString22.slice(0); 
-
-for(let i = 0; i < checkString1.length; i++)
-{
-        let index = strings.indexOf(checkString11[i]);
-        if(!~index)
-        { 
-          return false;
-        } 
-        else 
-        {
-          strings.splice(index, 1);
-          console.log(strings.join());
-        }
-      }
-      return true; 
-    }
-    console.log(isEqual(string1, string2));
+checkString11.length === checkString22.length && checkString11.sort().every(function(value, index) 
+{ return value === checkString22.sort()[index]});
+}
+    console.log((isEqual(string1, string2)));
 
    
