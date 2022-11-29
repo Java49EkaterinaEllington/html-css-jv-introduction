@@ -1,0 +1,54 @@
+body, html 
+{
+    height: 100%;
+}
+
+body 
+{
+    display: block; 
+    
+    background-color: rgb(216, 225, 245);
+    margin: 0;
+ }
+
+ .movie-item
+ {
+    display: inline-table;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10vh;
+ }
+
+ .release-date
+ {
+    list-style: none;
+    display: inline-block;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-height: 25vh;
+    overflow-y: auto;
+    justify-content: space-around;
+    padding-left: 0;
+    
+ }
+ 
+ .original-title
+ {
+    display: contents;
+    text-align: right;
+    flex-direction: row;
+
+ }
+
+ .overview
+ {
+   
+    display: contents;
+    flex-direction: column;
+    text-align: right;
+   
+
+   
+   
+    
+ }
