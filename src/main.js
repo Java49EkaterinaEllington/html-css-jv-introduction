@@ -1,68 +1,55 @@
-import { Company } from "./data/company.js";
-import { EmployeeForm } from "./ui/employeeForm.js";
+import { Library } from "./data/library.js";
+import { BookForm } from "./ui/BookForm.js";
 import { showErrorMessage } from "./ui/errorMessage.js";
 
-const MIN_SALARY = 1000;
-const MAX_SALARY = 40000;
-const MIN_YEAR = 1950;
-
-
+const MIN_PAGES = 50;
+const MAX_PAGES = 2000;
+const minDateString = '1980-01-01';
 const ACTIVE = "active"
 
-
-
-
-const salaryFormErrorElement = document.getElementById("salary_form_error");
-const employeesListElement = document.getElementById("employees-all");
-const employeesSalaryListElement = document.getElementById("employees-salary");
+const pagesFormErrorElement = document.getElementById("pages_form_error");
+const booksListElement = document.getElementById("books-all");
+const booksPagesListElement = document.getElementById("books-pages");
+const booksAuthorListElement = document.getElementById("books-author");
 const sectionsElement = document.querySelectorAll("section");
 const buttonsMenuElement = document.querySelectorAll(".buttons-menu *");
+const authorFormInputElements = document.querySelectorAll(".author-form-class [name]");
 /************************************************************************** */
-//functions of Company
 
+const library = new Library();
 
-const company = new Company();
-//functions of Employee Form
+const bookForm = new BookForm({
+    idForm: "book_form", idPagesInput: "pages_input",
+    idDateInput: "date_input", idPagesError: "pages_error", idDateError: "date_error",
+    minPages: MIN_PAGES, maxPages: MAX_PAGES, minDate: new Date(minDateString)
+});
+bookForm.addSubmitHandler(book => library.addBook(book));
 
-
-
-
-const employeeForm = new EmployeeForm({idForm: "employee_form", idDateInput: "date_input",
-idSalaryInput: "salary_input", idDateError: "date_error", idSalaryError: "salary_error",
- minYear: MIN_YEAR, minSalary: MIN_SALARY, maxSalary: MAX_SALARY})
- employeeForm.addSubmitHandler((employee) => company.hireEmployee(employee))
-/************************************************************* */
-
-/********************************************************************************** */
-
-//functions of Salary Form
-
-let salaryFrom = 0;
-let salaryTo = 0;
-function onSubmitSalary(event) {
+//functions of Pages Form
+let pageFrom = 0;
+let pageTo = 0;
+function onSubmitPages(event) {
     event.preventDefault();
-    const employees = company.getEmployeesBySalary(salaryFrom, salaryTo);
-    employeesSalaryListElement.innerHTML = getEmployeeItems(employees);
-
-
-   
+    const books = library.getBooksbyPagesRange(pageFrom, pageTo);
+    booksPagesListElement.innerHTML = getBookItems(books);
 }
-function onChangeSalaryFrom(event) {
+
+function onChangePagesFrom(event) {
     const value = +event.target.value;
-    if (salaryTo && value >= salaryTo) {
-        showErrorMessage(event.target, "Salary 'from' must be less than Salary 'to'",
-        salaryFormErrorElement);
+    if (pageTo && value >= pageTo) {
+        showErrorMessage(event.target, "Page number 'from' must be less than Page number 'to'",
+            pagesFormErrorElement);
     } else {
-        salaryFrom = value;
+        pageFrom = value;
     }
 }
-function onChangeSalaryTo(event) {
+function onChangePagesTo(event) {
     const value = +event.target.value;
-    if (salaryFrom && value < salaryFrom) {
-        showErrorMessage(event.target, "Salary 'To' must be greater than Salary 'From'",
-        salaryFormErrorElement);
+    if (pageFrom && value < pageFrom) {
+        showErrorMessage(event.target, "Page 'To' must be greater than Page 'From'",
+            pagesFormErrorElement);
     }
-    salaryTo = value;
+    pageTo = value;
 }
 function showSection(index) {
     buttonsMenuElement.forEach(e => e.classList.remove(ACTIVE));
@@ -70,25 +57,33 @@ function showSection(index) {
     buttonsMenuElement[index].classList.add(ACTIVE);
     sectionsElement[index].hidden = false;
     if (index == 1) {
-        const employees = company.getAllEmployees();
-        employeesListElement.innerHTML = getEmployeeItems(employees);
+        const books = library.getAllBooks();
+        booksListElement.innerHTML = getBookItems(books);
     }
 }
-function getEmployeeItems(employees) {
-    return employees.map (e => 
-        `<li class="employees-item">
-              <div class="employees-item-container">
-                 <p class="employees-item-paragraph">Name: ${e.employee_name} </p>
-                 <p class="employees-item-paragraph">Email: ${e.email} </p>
-                 <p class="employees-item-paragraph">Department: ${e.department}</p>
-                 <p class="employees-item-paragraph">Bithdate: ${e.birthDate}</p>
-                 <p class="employees-item-paragraph">Salary: ${e.salary}</p>
+function getBookItems(books) {
+    return books.map(book =>
+        `<li class="books-item">
+              <div class="books-item-container">
+                 <p class="books-item-paragraph">Title: ${book.book_title} </p>
+                 <p class="books-item-paragraph">Author: ${book.author} </p>
+                 <p class="books-item-paragraph">Genre: ${book.genre}</p>
+                 <p class="books-item-paragraph">Publishing Date: ${book.publishingDate}</p>
+                 <p class="books-item-paragraph">Number of Pages: ${book.pages}</p>
               </div>
           </li>`).join('');
 }
 
+// Functions of the Author form 
+function onSubmitAuthor(event) {
+    event.preventDefault();
+    const author = Array.from(authorFormInputElements)[0].value;
+    const books = library.getBooksbyAuthor(author);
+    booksAuthorListElement.innerHTML = getBookItems(books);
+}
 
 window.showSection = showSection;
-window.onChangeSalaryTo = onChangeSalaryTo;
-window.onChangeSalaryFrom = onChangeSalaryFrom
-window.onSubmitSalary = onSubmitSalary
+window.onChangePagesTo = onChangePagesTo;
+window.onChangePagesFrom = onChangePagesFrom;
+window.onSubmitPages = onSubmitPages;
+window.onSubmitAuthor = onSubmitAuthor;
