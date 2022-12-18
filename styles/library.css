@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background-color: rgb(207, 127, 194);
+    background-color: rgb(240, 188, 224);
 }
 
 .form-title {
@@ -62,12 +62,12 @@ body {
 }
 
 .error {
-    border-color: red;
+    border-color: rgb(124, 55, 55);
     color: red;
 }
 
 .active {
-    background-color: blue;
+    background-color: rgb(16, 16, 66);
     color: white;
 }
 
@@ -83,7 +83,7 @@ body {
 
 .books-item {
     max-width: 30vw;
-    background-color: blue;
+    background-color: rgb(247, 247, 253);
     border-radius: 25%;
     text-align: center;
     border: 2px solid blue;
